@@ -1,0 +1,87 @@
+﻿@model saloonappointment.Booking
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<section class="crudsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mainBox">
+                    <h2>CREATE BOOKING</h2>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                           
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group p-0">
+                                @Html.LabelFor(model => model.Booking_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12 p-0">
+                                    @Html.EditorFor(model => model.Booking_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Booking_Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Qty, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12 p-0">
+                                    @Html.EditorFor(model => model.Qty, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Qty, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Booking_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12 p-0">
+                                    @Html.EditorFor(model => model.Booking_Date, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Booking_Date, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Advance, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12 p-0">
+                                    @Html.EditorFor(model => model.Advance, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Advance, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Total_Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12 p-0">
+                                    @Html.EditorFor(model => model.Total_Amount, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Total_Amount, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Client_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-12 p-0">
+                                    @Html.EditorFor(model => model.Client_Id, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Client_Id, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12 p-0">
+                                    <input type="submit" value="Add Booking" class=" text-white btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="backbtn">
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

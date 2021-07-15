@@ -1,0 +1,89 @@
+﻿@model IEnumerable<saloonappointment.Client>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<section class="crudsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mainBox">
+                    <h2>Customer Records</h2>
+
+                    <p class="createbtn">
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+
+                    @using (Html.BeginForm("Index", "Clients", FormMethod.Post))
+                    {
+                       <div class=" row form-horizontal searchdiv">
+                           
+                           <div class="col-lg-4 p-0">
+                               @Html.TextBox("searchTxt", null, new {@class="form-control searchbar",@placeholder="Search By Name", @style="max-width:100%" })
+                           </div>
+                           <div class="col-lg-1 p-0">
+                               <button class="btn searchbtn" type="submit">Search</button>
+                           </div>
+                       </div>
+                    }
+                    <table class="table table-striped">
+                        <tr class="thead">
+                            <th >
+                                @Html.DisplayNameFor(model => model.Client_Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Client_Username)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Client_Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Client_Password)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Client_Contact_No)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Client_Address)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Client_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Client_Username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Client_Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Client_Password)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Client_Contact_No)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Client_Address)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Client_Id} , new { @class="editbtn" }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Client_Id },new { @class = "detailbtn" }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Client_Id }, new { @class = "deletebtn" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

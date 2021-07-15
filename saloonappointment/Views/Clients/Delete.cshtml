@@ -1,0 +1,64 @@
+﻿@model saloonappointment.Client
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<section class="crudsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mainBox">
+                    <h2>Customer Delete</h2>
+
+                    <h3>Are You Sure?</h3>
+                    <div>
+                 
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt>@Html.DisplayNameFor(model => model.Client_Name)</dt>
+                                    <dd>@Html.DisplayFor(model => model.Client_Name)</dd>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt> @Html.DisplayNameFor(model => model.Client_Username)</dt>
+                                    <dd> @Html.DisplayFor(model => model.Client_Username)</dd>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt>  @Html.DisplayNameFor(model => model.Client_Email)</dt>
+                                    <dd>   @Html.DisplayFor(model => model.Client_Email)</dd>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt>  @Html.DisplayNameFor(model => model.Client_Password)</dt>
+                                    <dd> @Html.DisplayFor(model => model.Client_Password)</dd>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt>  @Html.DisplayNameFor(model => model.Client_Contact_No)</dt>
+                                    <dd>  @Html.DisplayFor(model => model.Client_Contact_No)</dd>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt> @Html.DisplayNameFor(model => model.Client_Address)</dt>
+                                    <dd> @Html.DisplayFor(model => model.Client_Address)</dd>
+                                </div>
+                            </div>
+
+                        </dl>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn deletebtn1" /> |
+                                @Html.ActionLink("Back to List", "Index" , new { @class= "backtolistbtn" })
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

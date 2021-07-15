@@ -1,0 +1,128 @@
+﻿@model saloonappointment.Booking
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<section class="crudsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mainBox">
+                    <h2>Delete Booking</h2>
+                    <div>
+
+                        <hr />
+                        <dl class="dl-horizontal">
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Booking_Name)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Booking_Name)
+                                    </dd>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Qty)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Qty)
+                                    </dd>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Booking_Date)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Booking_Date)
+                                    </dd>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Advance)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Advance)
+                                    </dd>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Total_Amount)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Total_Amount)
+                                    </dd>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-12">
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Client_Id)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Client_Id)
+                                    </dd>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-12">
+
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Booking1.Booking_Name)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Booking1.Booking_Name)
+                                    </dd>
+
+                                </div>
+
+
+                                <div class="col-lg-3 col-md-6 col-12">
+
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Booking2.Booking_Name)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Booking2.Booking_Name)
+                                    </dd>
+
+                                </div>
+
+                            </div>                       
+
+
+                        </dl>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn text-white btn-default" /> |
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

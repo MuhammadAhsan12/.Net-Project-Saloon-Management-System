@@ -1,0 +1,60 @@
+﻿@model IEnumerable<saloonappointment.Product_Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<section class="crudsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mainBox">
+                    <h2>Category Records</h2>
+
+                    <p class="createbtn">
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+
+
+                    @using (Html.BeginForm("Index", "Product_Category", FormMethod.Post))
+                    {
+                        <div class=" row form-horizontal searchdiv">
+
+                            <div class="col-lg-3 p-0">
+                                @Html.TextBox("searchTxt", null, new { @class = "form-control searchbar", @placeholder = "Search Product Category", @style = "max-width:100%" })
+                            </div>
+                            <div class="col-lg-1 p-0">
+                                <button class="btn searchbtn" type="submit">Search</button>
+                            </div>
+                        </div>
+                    }
+
+                    <table class="table ">
+                        <tr class="thead">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prod_Category_Name)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Prod_Category_Name)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Prod_Category_Id }, new { @class = "editbtn" }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Prod_Category_Id }, new { @class = "deletebtn" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

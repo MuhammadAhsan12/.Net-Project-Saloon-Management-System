@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SaloonDBModelStoreContainer" CdmEntityContainer="SaloonDBEntities">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SaloonDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="U_Password" ColumnName="U_Password" />
+          <ScalarProperty Name="U_Email" ColumnName="U_Email" />
+          <ScalarProperty Name="U_Lastname" ColumnName="U_Lastname" />
+          <ScalarProperty Name="U_Firstname" ColumnName="U_Firstname" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="SaloonDBModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone_no" ColumnName="Phone_no" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="SaloonDBModel.Appointment">
+        <MappingFragment StoreEntitySet="Appointments">
+          <ScalarProperty Name="Appointment_Date" ColumnName="Appointment_Date" />
+          <ScalarProperty Name="If_Rescheduled" ColumnName="If_Rescheduled" />
+          <ScalarProperty Name="Cancel_Reason" ColumnName="Cancel_Reason" />
+          <ScalarProperty Name="If_Cancelled" ColumnName="If_Cancelled" />
+          <ScalarProperty Name="Total_Amount" ColumnName="Total_Amount" />
+          <ScalarProperty Name="Expected_End_Time" ColumnName="Expected_End_Time" />
+          <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+          <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+          <ScalarProperty Name="Service_Id" ColumnName="Service_Id" />
+          <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+          <ScalarProperty Name="Appointment_Id" ColumnName="Appointment_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="SaloonDBModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="Client_Address" ColumnName="Client_Address" />
+          <ScalarProperty Name="Client_Contact_No" ColumnName="Client_Contact_No" />
+          <ScalarProperty Name="Client_Password" ColumnName="Client_Password" />
+          <ScalarProperty Name="Client_Email" ColumnName="Client_Email" />
+          <ScalarProperty Name="Client_Username" ColumnName="Client_Username" />
+          <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+          <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="SaloonDBModel.Package">
+        <MappingFragment StoreEntitySet="Package">
+          <ScalarProperty Name="Avalaible_To_Date" ColumnName="Avalaible_To_Date" />
+          <ScalarProperty Name="Avalaible_From_Date" ColumnName="Avalaible_From_Date" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Service_Id" ColumnName="Service_Id" />
+          <ScalarProperty Name="Package_desc" ColumnName="Package_desc" />
+          <ScalarProperty Name="Package_Name" ColumnName="Package_Name" />
+          <ScalarProperty Name="Package_Id" ColumnName="Package_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="SaloonDBModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="Appoinment_Id" ColumnName="Appoinment_Id" />
+          <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+          <ScalarProperty Name="Payment_Amount" ColumnName="Payment_Amount" />
+          <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+          <ScalarProperty Name="Payment_Id" ColumnName="Payment_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="SaloonDBModel.Service">
+        <MappingFragment StoreEntitySet="Services">
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Appointment_Id" ColumnName="Appointment_Id" />
+          <ScalarProperty Name="Service_If_Provided" ColumnName="Service_If_Provided" />
+          <ScalarProperty Name="Service_If_Booked" ColumnName="Service_If_Booked" />
+          <ScalarProperty Name="Service_Price" ColumnName="Service_Price" />
+          <ScalarProperty Name="Service_Duration" ColumnName="Service_Duration" />
+          <ScalarProperty Name="Service_Name" ColumnName="Service_Name" />
+          <ScalarProperty Name="Service_Id" ColumnName="Service_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="SaloonDBModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Emp_Image" ColumnName="Emp_Image" />
+          <ScalarProperty Name="Emp_Contact_No" ColumnName="Emp_Contact_No" />
+          <ScalarProperty Name="Emp_Address" ColumnName="Emp_Address" />
+          <ScalarProperty Name="Emp_Job_Title" ColumnName="Emp_Job_Title" />
+          <ScalarProperty Name="Emp_Avalaible_To" ColumnName="Emp_Avalaible_To" />
+          <ScalarProperty Name="Emp_Avalaible_From" ColumnName="Emp_Avalaible_From" />
+          <ScalarProperty Name="Emp_Password" ColumnName="Emp_Password" />
+          <ScalarProperty Name="Emp_Email" ColumnName="Emp_Email" />
+          <ScalarProperty Name="Emp_Username" ColumnName="Emp_Username" />
+          <ScalarProperty Name="Emp_Name" ColumnName="Emp_Name" />
+          <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="SaloonDBModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+          <ScalarProperty Name="Total_Amount" ColumnName="Total_Amount" />
+          <ScalarProperty Name="Advance" ColumnName="Advance" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Booking_Name" ColumnName="Booking_Name" />
+          <ScalarProperty Name="Booking_Id" ColumnName="Booking_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Category">
+      <EntityTypeMapping TypeName="SaloonDBModel.Product_Category">
+        <MappingFragment StoreEntitySet="Product_Category">
+          <ScalarProperty Name="Prod_Category_Name" ColumnName="Prod_Category_Name" />
+          <ScalarProperty Name="Prod_Category_Id" ColumnName="Prod_Category_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SaloonDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="SaloonDBModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Product_Img" ColumnName="Product_Img" />
+          <ScalarProperty Name="Prod_Category_Id" ColumnName="Prod_Category_Id" />
+          <ScalarProperty Name="Product_Benifit" ColumnName="Product_Benifit" />
+          <ScalarProperty Name="Product_Qty" ColumnName="Product_Qty" />
+          <ScalarProperty Name="Product_Expiry_Date" ColumnName="Product_Expiry_Date" />
+          <ScalarProperty Name="Product_Manufect_Date" ColumnName="Product_Manufect_Date" />
+          <ScalarProperty Name="Product_Desc" ColumnName="Product_Desc" />
+          <ScalarProperty Name="Product_Price" ColumnName="Product_Price" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

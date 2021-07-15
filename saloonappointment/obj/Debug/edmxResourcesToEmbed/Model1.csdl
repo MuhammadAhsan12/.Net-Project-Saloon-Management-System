@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SaloonDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SaloonDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="SaloonDBModel.User" />
+    <EntitySet Name="Admins" EntityType="SaloonDBModel.Admin" />
+    <EntitySet Name="Appointments" EntityType="SaloonDBModel.Appointment" />
+    <EntitySet Name="Clients" EntityType="SaloonDBModel.Client" />
+    <EntitySet Name="Packages" EntityType="SaloonDBModel.Package" />
+    <EntitySet Name="Payments" EntityType="SaloonDBModel.Payment" />
+    <EntitySet Name="Services" EntityType="SaloonDBModel.Service" />
+    <AssociationSet Name="FK_Appointments_Client" Association="SaloonDBModel.FK_Appointments_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointments_Services" Association="SaloonDBModel.FK_Appointments_Services">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Appointments" Association="SaloonDBModel.FK_Payment_Appointments">
+      <End Role="Appointment" EntitySet="Appointments" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Client" Association="SaloonDBModel.FK_Payment_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Package_Package" Association="SaloonDBModel.FK_Package_Package">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="Package" EntitySet="Packages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Package_Package1" Association="SaloonDBModel.FK_Package_Package1">
+      <End Role="Package" EntitySet="Packages" />
+      <End Role="Package1" EntitySet="Packages" />
+    </AssociationSet>
+    <EntitySet Name="Employees" EntityType="SaloonDBModel.Employee" />
+    <EntitySet Name="Bookings" EntityType="SaloonDBModel.Booking" />
+    <EntitySet Name="Product_Category" EntityType="SaloonDBModel.Product_Category" />
+    <EntitySet Name="sysdiagrams" EntityType="SaloonDBModel.sysdiagram" />
+    <AssociationSet Name="FK_Booking_Booking" Association="SaloonDBModel.FK_Booking_Booking">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Booking1" EntitySet="Bookings" />
+    </AssociationSet>
+    <EntitySet Name="Products" EntityType="SaloonDBModel.Product" />
+    <AssociationSet Name="FK_Product_Product_Category" Association="SaloonDBModel.FK_Product_Product_Category">
+      <End Role="Product_Category" EntitySet="Product_Category" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="U_Firstname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="U_Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="U_Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="U_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="Phone_no" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="Appointment_Id" />
+    </Key>
+    <Property Name="Appointment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Id" Type="Int32" />
+    <Property Name="Service_Id" Type="Int32" />
+    <Property Name="Start_Time" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="End_Time" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Expected_End_Time" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Total_Amount" Type="Double" />
+    <Property Name="If_Cancelled" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cancel_Reason" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="If_Rescheduled" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Appointment_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Client" Relationship="SaloonDBModel.FK_Appointments_Client" FromRole="Appointment" ToRole="Client" />
+    <NavigationProperty Name="Service" Relationship="SaloonDBModel.FK_Appointments_Services" FromRole="Appointment" ToRole="Service" />
+    <NavigationProperty Name="Payments" Relationship="SaloonDBModel.FK_Payment_Appointments" FromRole="Appointment" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Client_Id" />
+    </Key>
+    <Property Name="Client_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Client_Username" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="Client_Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Client_Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Client_Contact_No" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Client_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Appointments" Relationship="SaloonDBModel.FK_Appointments_Client" FromRole="Client" ToRole="Appointment" />
+    <NavigationProperty Name="Payments" Relationship="SaloonDBModel.FK_Payment_Client" FromRole="Client" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="Package_Id" />
+    </Key>
+    <Property Name="Package_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Package_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Package_desc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Service_Id" Type="Int32" />
+    <Property Name="Product_Id" Type="Int32" />
+    <Property Name="Avalaible_From_Date" Type="DateTime" Precision="0" />
+    <Property Name="Avalaible_To_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Service" Relationship="SaloonDBModel.FK_Package_Package" FromRole="Package" ToRole="Service" />
+    <NavigationProperty Name="Package1" Relationship="SaloonDBModel.FK_Package_Package1" FromRole="Package" ToRole="Package1" />
+    <NavigationProperty Name="Package2" Relationship="SaloonDBModel.FK_Package_Package1" FromRole="Package1" ToRole="Package" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Payment_Id" />
+    </Key>
+    <Property Name="Payment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Id" Type="Int32" />
+    <Property Name="Payment_Amount" Type="Double" />
+    <Property Name="Payment_Date" Type="DateTime" Precision="0" />
+    <Property Name="Appoinment_Id" Type="Int32" />
+    <NavigationProperty Name="Appointment" Relationship="SaloonDBModel.FK_Payment_Appointments" FromRole="Payment" ToRole="Appointment" />
+    <NavigationProperty Name="Client" Relationship="SaloonDBModel.FK_Payment_Client" FromRole="Payment" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Service_Id" />
+    </Key>
+    <Property Name="Service_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_Name" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+    <Property Name="Service_Duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Service_Price" Type="Double" />
+    <Property Name="Service_If_Booked" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Service_If_Provided" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Appointment_Id" Type="Int32" />
+    <Property Name="Product_Id" Type="Int32" />
+    <NavigationProperty Name="Appointments" Relationship="SaloonDBModel.FK_Appointments_Services" FromRole="Service" ToRole="Appointment" />
+    <NavigationProperty Name="Packages" Relationship="SaloonDBModel.FK_Package_Package" FromRole="Service" ToRole="Package" />
+  </EntityType>
+  <Association Name="FK_Appointments_Client">
+    <End Type="SaloonDBModel.Client" Role="Client" Multiplicity="0..1" />
+    <End Type="SaloonDBModel.Appointment" Role="Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Client_Id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointments_Services">
+    <End Type="SaloonDBModel.Service" Role="Service" Multiplicity="0..1" />
+    <End Type="SaloonDBModel.Appointment" Role="Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Service_Id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Appointments">
+    <End Type="SaloonDBModel.Appointment" Role="Appointment" Multiplicity="0..1" />
+    <End Type="SaloonDBModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment">
+        <PropertyRef Name="Appointment_Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Appoinment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Client">
+    <End Type="SaloonDBModel.Client" Role="Client" Multiplicity="0..1" />
+    <End Type="SaloonDBModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Client_Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Package_Package">
+    <End Type="SaloonDBModel.Service" Role="Service" Multiplicity="0..1" />
+    <End Type="SaloonDBModel.Package" Role="Package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Service_Id" />
+      </Principal>
+      <Dependent Role="Package">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Package_Package1">
+    <End Type="SaloonDBModel.Package" Role="Package" Multiplicity="1" />
+    <End Type="SaloonDBModel.Package" Role="Package1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="Package_Id" />
+      </Principal>
+      <Dependent Role="Package1">
+        <PropertyRef Name="Package_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Emp_Id" />
+    </Key>
+    <Property Name="Emp_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Emp_Username" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="Emp_Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Emp_Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Emp_Avalaible_From" Type="Int32" />
+    <Property Name="Emp_Avalaible_To" Type="Int32" />
+    <Property Name="Emp_Job_Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Emp_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Emp_Contact_No" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Emp_Image" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_Id" />
+    </Key>
+    <Property Name="Booking_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Booking_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="Booking_Date" Type="DateTime" Precision="0" />
+    <Property Name="Advance" Type="Double" />
+    <Property Name="Total_Amount" Type="Double" />
+    <Property Name="Client_Id" Type="Int32" />
+    <NavigationProperty Name="Booking1" Relationship="SaloonDBModel.FK_Booking_Booking" FromRole="Booking" ToRole="Booking1" />
+    <NavigationProperty Name="Booking2" Relationship="SaloonDBModel.FK_Booking_Booking" FromRole="Booking1" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="Product_Category">
+    <Key>
+      <PropertyRef Name="Prod_Category_Id" />
+    </Key>
+    <Property Name="Prod_Category_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prod_Category_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="SaloonDBModel.FK_Product_Product_Category" FromRole="Product_Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Booking_Booking">
+    <End Type="SaloonDBModel.Booking" Role="Booking" Multiplicity="1" />
+    <End Type="SaloonDBModel.Booking" Role="Booking1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Booking_Id" />
+      </Principal>
+      <Dependent Role="Booking1">
+        <PropertyRef Name="Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_Name" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+    <Property Name="Product_Price" Type="Double" />
+    <Property Name="Product_Desc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Product_Manufect_Date" Type="DateTime" Precision="3" />
+    <Property Name="Product_Expiry_Date" Type="DateTime" Precision="3" />
+    <Property Name="Product_Qty" Type="Int32" />
+    <Property Name="Product_Benifit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prod_Category_Id" Type="Int32" />
+    <Property Name="Product_Img" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product_Category" Relationship="SaloonDBModel.FK_Product_Product_Category" FromRole="Product" ToRole="Product_Category" />
+  </EntityType>
+  <Association Name="FK_Product_Product_Category">
+    <End Type="SaloonDBModel.Product_Category" Role="Product_Category" Multiplicity="0..1" />
+    <End Type="SaloonDBModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Category">
+        <PropertyRef Name="Prod_Category_Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Prod_Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

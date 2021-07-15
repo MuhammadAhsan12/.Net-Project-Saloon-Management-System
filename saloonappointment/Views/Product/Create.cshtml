@@ -1,0 +1,122 @@
+﻿@model saloonappointment.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<section class="crudsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mainBox">
+                    <h2>Add Products</h2>
+
+                    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                           
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+               
+                            <div class="row">
+                                <div class="col-lg-6 col-12 ">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Product_Name, htmlAttributes: new { @class = "control-label " })
+                                        <div class="col-md-12 p-0">
+                                            @Html.EditorFor(model => model.Product_Name, new { htmlAttributes = new { @class = "form-control" , @placeholder="Enter ProductName" } })
+                                            @Html.ValidationMessageFor(model => model.Product_Name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Product_Price, htmlAttributes: new { @class = "control-label " })
+                                        <div class="col-md-12 p-0">
+                                            @Html.EditorFor(model => model.Product_Price, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter ProductPrice" } })
+                                            @Html.ValidationMessageFor(model => model.Product_Price, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Product_Desc, htmlAttributes: new { @class = "control-label " })
+                                        <div class="col-md-12 p-0">
+                                            @Html.EditorFor(model => model.Product_Desc, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Product Desc" } })
+                                            @Html.ValidationMessageFor(model => model.Product_Desc, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Product_Manufect_Date, htmlAttributes: new { @class = "control-label " })
+                                        <div class="col-md-12 p-0">
+                                            @Html.EditorFor(model => model.Product_Manufect_Date, new { htmlAttributes = new { @class = "form-control", @placeholder = "Manufecture Date" } })
+                                            @Html.ValidationMessageFor(model => model.Product_Manufect_Date, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Product_Expiry_Date, htmlAttributes: new { @class = "control-label"})
+                                        <div class="col-md-12 p-0">
+                                            @Html.EditorFor(model => model.Product_Expiry_Date, new { htmlAttributes = new { @class = "form-control", @placeholder = "Expiry Date" } })
+                                            @Html.ValidationMessageFor(model => model.Product_Expiry_Date, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Product_Qty, htmlAttributes: new { @class = "control-label " })
+                                        <div class="col-md-12 p-0 ">
+                                            @Html.EditorFor(model => model.Product_Qty, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Qty" } })
+                                            @Html.ValidationMessageFor(model => model.Product_Qty, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Product_Benifit, htmlAttributes: new { @class = "control-label " })
+                                        <div class="col-md-12 p-0">
+                                            @Html.EditorFor(model => model.Product_Benifit, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Benifit" } })
+                                            @Html.ValidationMessageFor(model => model.Product_Benifit, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Prod_Category_Id, "Prod_Category_Id", htmlAttributes: new { @class = "control-label " })
+                                        <div class="col-md-12 p-0">
+                                            @Html.DropDownListFor(model => model.Prod_Category_Id, ViewBag.CategoryList as SelectList, "-- Select Product Category -- ", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Prod_Category_Id, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Product_Img, htmlAttributes: new { @class = "control-label " })
+                                        <div class="col-md-12 p-0">
+                                            <input type="file" name="file" required="required" id="file" />
+                                            @Html.ValidationMessageFor(model => model.Product_Img, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class=" col-md-12 p-0 ">
+                                            <input type="submit" value="Add Product" class="btn text-white" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-12">
+                                    <div class="imgBox">
+                                        <img src="~/Content/imgs/productcategory.png" alt="Alternate Text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="backbtn">
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<saloonappointment.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<section class="crudsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mainBox">
+                    <h2>Product Records</h2>
+
+                    <p class="createbtn">
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+
+                    <hr />
+                    @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+                    {
+                        <div class=" row form-horizontal searchdiv">
+
+                            <div class="col-lg-4 p-0">
+                                @Html.TextBox("searchTxt", null, new { @class = "form-control searchbar", @placeholder = "Search Products", @style = "max-width:100%" })
+                            </div>
+                            <div class="col-lg-1 p-0">
+                                <button class="btn searchbtn" type="submit">Search</button>
+                            </div>
+                        </div>
+                    }
+
+                    <table class="table">
+                        <tr class="thead">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Product_Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Product_Price)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Product_Qty)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Product_Img)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Product_Category.Prod_Category_Name)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product_Price)
+                                </td>
+
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product_Qty)
+                                </td>
+
+                                <td>
+                                    <img src="@Url.Content(item.Product_Img)" alt="Emp Image" width="80" height="80" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product_Category.Prod_Category_Name)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Product_Id }, new { @class = "editbtn" }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Product_Id }, new { @class = "detailbtn" }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Product_Id }, new { @class = "deletebtn" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

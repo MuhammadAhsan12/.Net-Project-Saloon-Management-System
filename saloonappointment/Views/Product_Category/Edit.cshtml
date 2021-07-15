@@ -1,0 +1,58 @@
+﻿@model saloonappointment.Product_Category
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<section class="crudsec">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mainBox">
+                    <h2>Edit Category</h2>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Prod_Category_Id)
+
+                        <div class="row">
+                            <div class="col-lg-6 col-12 p-0">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Prod_Category_Name, htmlAttributes: new { @class = "control-label ml-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Prod_Category_Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Categoryname" } })
+                                        @Html.ValidationMessageFor(model => model.Prod_Category_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Save Category" class="btn text-white" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12 ">
+                                <div class="imgBox">
+                                    <img src="~/Content/imgs/productcategory.png" alt="Alternate Text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                    <div class="backbtn">
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

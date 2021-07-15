@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SaloonDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Username" Type="nchar" MaxLength="70" />
+    <Property Name="Email" Type="nvarchar" MaxLength="70" />
+    <Property Name="Password" Type="nvarchar" MaxLength="70" />
+    <Property Name="Phone_no" Type="nvarchar" MaxLength="15" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Appointments">
+    <Key>
+      <PropertyRef Name="Appointment_Id" />
+    </Key>
+    <Property Name="Appointment_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Client_Id" Type="int" />
+    <Property Name="Service_Id" Type="int" />
+    <Property Name="Start_Time" Type="nvarchar" MaxLength="10" />
+    <Property Name="End_Time" Type="nvarchar" MaxLength="10" />
+    <Property Name="Expected_End_Time" Type="nvarchar" MaxLength="10" />
+    <Property Name="Total_Amount" Type="float" />
+    <Property Name="If_Cancelled" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cancel_Reason" Type="nvarchar" MaxLength="150" />
+    <Property Name="If_Rescheduled" Type="nvarchar" MaxLength="50" />
+    <Property Name="Appointment_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_Id" />
+    </Key>
+    <Property Name="Booking_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Booking_Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="Booking_Date" Type="date" />
+    <Property Name="Advance" Type="float" />
+    <Property Name="Total_Amount" Type="float" />
+    <Property Name="Client_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Client_Id" />
+    </Key>
+    <Property Name="Client_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Client_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Client_Username" Type="nvarchar" MaxLength="70" />
+    <Property Name="Client_Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="Client_Password" Type="nvarchar" MaxLength="250" />
+    <Property Name="Client_Contact_No" Type="nvarchar" MaxLength="15" />
+    <Property Name="Client_Address" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Emp_Id" />
+    </Key>
+    <Property Name="Emp_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Emp_Username" Type="nvarchar" MaxLength="70" />
+    <Property Name="Emp_Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="Emp_Password" Type="nvarchar" MaxLength="250" />
+    <Property Name="Emp_Avalaible_From" Type="int" />
+    <Property Name="Emp_Avalaible_To" Type="int" />
+    <Property Name="Emp_Job_Title" Type="nvarchar" MaxLength="150" />
+    <Property Name="Emp_Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="Emp_Contact_No" Type="nvarchar" MaxLength="15" />
+    <Property Name="Emp_Image" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="Package_Id" />
+    </Key>
+    <Property Name="Package_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Package_Name" Type="nvarchar" MaxLength="80" />
+    <Property Name="Package_desc" Type="nvarchar" MaxLength="250" />
+    <Property Name="Service_Id" Type="int" />
+    <Property Name="Product_Id" Type="int" />
+    <Property Name="Avalaible_From_Date" Type="date" />
+    <Property Name="Avalaible_To_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Payment_Id" />
+    </Key>
+    <Property Name="Payment_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Client_Id" Type="int" />
+    <Property Name="Payment_Amount" Type="float" />
+    <Property Name="Payment_Date" Type="date" />
+    <Property Name="Appoinment_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_Name" Type="nvarchar" MaxLength="90" />
+    <Property Name="Product_Price" Type="float" />
+    <Property Name="Product_Desc" Type="nvarchar" MaxLength="150" />
+    <Property Name="Product_Manufect_Date" Type="datetime" />
+    <Property Name="Product_Expiry_Date" Type="datetime" />
+    <Property Name="Product_Qty" Type="int" />
+    <Property Name="Product_Benifit" Type="nvarchar" MaxLength="50" />
+    <Property Name="Prod_Category_Id" Type="int" />
+    <Property Name="Product_Img" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Product_Category">
+    <Key>
+      <PropertyRef Name="Prod_Category_Id" />
+    </Key>
+    <Property Name="Prod_Category_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Prod_Category_Name" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="Service_Id" />
+    </Key>
+    <Property Name="Service_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Service_Name" Type="nvarchar" MaxLength="90" />
+    <Property Name="Service_Duration" Type="text" />
+    <Property Name="Service_Price" Type="float" />
+    <Property Name="Service_If_Booked" Type="text" />
+    <Property Name="Service_If_Provided" Type="text" />
+    <Property Name="Appointment_Id" Type="int" />
+    <Property Name="Product_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="U_Firstname" Type="nchar" MaxLength="50" />
+    <Property Name="U_Lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="U_Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="U_Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="gender" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Appointments_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Client_Id" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointments_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_Id" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Booking">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="1" />
+    <End Role="Booking1" Type="Self.Booking" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Booking_Id" />
+      </Principal>
+      <Dependent Role="Booking1">
+        <PropertyRef Name="Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Package_Package">
+    <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+    <End Role="Package" Type="Self.Package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Service_Id" />
+      </Principal>
+      <Dependent Role="Package">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Package_Package1">
+    <End Role="Package" Type="Self.Package" Multiplicity="1" />
+    <End Role="Package1" Type="Self.Package" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="Package_Id" />
+      </Principal>
+      <Dependent Role="Package1">
+        <PropertyRef Name="Package_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Appointments">
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointments">
+        <PropertyRef Name="Appointment_Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Appoinment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Client_Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Product_Category">
+    <End Role="Product_Category" Type="Self.Product_Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Category">
+        <PropertyRef Name="Prod_Category_Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Prod_Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SaloonDBModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Category" EntityType="Self.Product_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Appointments_Client" Association="Self.FK_Appointments_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointments_Services" Association="Self.FK_Appointments_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Booking" Association="Self.FK_Booking_Booking">
+      <End Role="Booking" EntitySet="Booking" />
+      <End Role="Booking1" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Package_Package" Association="Self.FK_Package_Package">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Package" EntitySet="Package" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Package_Package1" Association="Self.FK_Package_Package1">
+      <End Role="Package" EntitySet="Package" />
+      <End Role="Package1" EntitySet="Package" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Appointments" Association="Self.FK_Payment_Appointments">
+      <End Role="Appointments" EntitySet="Appointments" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Client" Association="Self.FK_Payment_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Product_Category" Association="Self.FK_Product_Product_Category">
+      <End Role="Product_Category" EntitySet="Product_Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
